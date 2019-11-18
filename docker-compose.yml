@@ -1,2 +1,32 @@
-version: '3.3'
+version: '3'
 
+services:
+  # Database
+  db:
+    image: mysql:5.7
+    volumes: ['./mysql:/var/lib/mysql']
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: flab.Abroad.Flatterer4.resample.7war.0slop.7avid
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: Rigor.4tassel.majorette5.8agree.Mummified.Arizona.Groat8
+    networks:
+      - wpsite
+  # Wordpress
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - '8080:80'
+    restart: always
+    volumes: ['./html:/var/www/html']
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: Rigor.4tassel.majorette5.8agree.Mummified.Arizona.Groat8
+    networks:
+      - wpsite
+networks:
+  wpsite:
