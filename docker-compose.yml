@@ -7,10 +7,10 @@ services:
     volumes: ['./mysql:/var/lib/mysql']
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: flab.Abroad.Flatterer4.resample.7war.0slop.7avid
+      MYSQL_RANDOM_ROOT_PASSWORD: 'true'
       MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: Rigor.4tassel.majorette5.8agree.Mummified.Arizona.Groat8
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
       - wpsite
   # Wordpress
@@ -24,8 +24,8 @@ services:
     volumes: ['./html:/var/www/html']
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: Rigor.4tassel.majorette5.8agree.Mummified.Arizona.Groat8
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
     networks:
       - wpsite
 networks:
