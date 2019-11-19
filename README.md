@@ -1,4 +1,4 @@
-# Simple reference repo for running WordPress with Docker
+# Simple reference repo for deploying WordPress with Docker
 
 ## Usage
 
